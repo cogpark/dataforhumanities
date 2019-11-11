@@ -1,0 +1,28 @@
+ <h3>Multiple join conditions</h3>
+  Sometimes, you need to join on multiple columns. This happens a lot when you have a "time" column in a table. If we imagine that
+our <code>DOGS</code> table above had number of words by month, then joining on the dog's name is going to return one record for each month
+that you've worked with the dog. For example, here's an example using George, a very good and smart boy:
+
+  <div class= "codeblock">
+    <pre>
+      DOGS (without month)
+          dog_name |  age  |      breed      | words_learned
+      -------------+-------+-----------------+--------------
+      | George     |   3   |aussie shepherd  |      149
+    </pre>
+  </div>
+
+  <div class= "codeblock">
+  <pre>
+    DOGS (with month)
+        dog_name |  age  |      breed      | words_learned |  month
+    -------------+-------+-----------------+---------------+ ------
+    | George     |   3   |aussie shepherd  |      50       |  Jan
+    | George     |   3   |aussie shepherd  |      43       |  Feb
+    | George     |   3   |aussie shepherd  |      56       |  March
+  </pre>
+</div>
+  <p>Nice job in March, George. Anyway, if you only wanted to get 1 record back for George -- maybe you're about to send out your March
+    postcard -- you would need to join on <code>dog_name</code> and <code>month</code>. All you have to do is append an add an <code>AND</code> clause to the
+    <code>JOIN</code>query.
+  </p>.
