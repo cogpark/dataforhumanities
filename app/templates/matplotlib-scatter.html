@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Basic scatter plots in using Matplotlib</h1>
+        <h2>Contents</h2>
+            <ul>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        <h2>Intro</h2>
+                <p>Scatter plots are useful for seeing if there's a relationship between two variables. The idea is, you graph one against another,
+                    and you can see if an increase in one is mirrored by an increase in another, if one decreases when the other increases, or if
+                    there's no apparent relationship. </p><br>
+
+                <p>Here's how you make a basic scatter plot in using the Python3 library, matplotlib.</p>
+
+        <h2>Setup</h2>
+                <p>You'll need Matplotlib installed. You will almost certainly want Pandas, another Python library, too. If
+                    <a href="https://www.anaconda.com/distribution/">you have Anaconda installed</a>, you're already set. You can also install
+                    each&#8212;<a href="https://pandas.pydata.org/pandas-docs/stable/install.html">Pandas</a> and
+                    <a href="https://matplotlib.org/3.1.1/users/installing.html">Matplotlib</a>&#8212; individually.</p> <br>
+
+                <p>Finally, you'll need somewhere to visualize your plot. A great place to begin is with
+                    <a href="https://jupyter.org/install">Jupyter Notebooks, which is what I'll be using here./a></p><br>
+
+                <p>You'll also need data. I'll show you how to do this with fake data and with data you import from a csv. </p>
+
+        <h2>A quick, basic scatter</h2>
+            <p>Here are the basic building blocks of a scatter plot:</p>
+             <div class= "codeblock">
+                <pre>
+                # You'll see Matplotlib.pyplot abbreviated as plt and pp
+                import matplotlib.pyplot as plt
+
+                # Here's some data
+                x = [1,3,19,3,12,15,25,43,3,13,19,12]
+                y = [2,25,24,35,18,34,7,10,23,21,1,8]
+
+                # feed x and y into a scatter plot
+                plt.scatter(x,y)
+
+                # give it a title
+                plt.title('A very basic scatterplot')
+
+                # draw it
+                plt.show()
+                </pre></div>
+            <p>That generates the following scatter plot:</p>
+            <img src="../static/img/scatter-basic">
+            <p>This is missing all sorts of things you'll eventually want&#8212;axis titles, a bigger chart, nice colors&#8212; but it also
+                illustrates the 4 basic things you'll do when you generate scatterplots using Matplotlib.pyplot:</p>
+            <ul>
+                <li>Load data into your environment (e.g. your Jupyter Notebook)</li>
+                <li>Get data into the correct format for scatter plotting </li>
+                <li>Load the data into your chart</li>
+                <li>Style the chart</li>
+            </ul>
+
+        <h2>Scatterplotting data that you load from a CSV</h2>
+            <p>A lot of data you work with will be in .csv or .txt format. Fortunately, Pandas has a <code>read_csv()</code>function that can help.
+                For this example, I'll use <a href="https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset">a dataset on London
+                    bike sharing</a>I downloaded from Kaggle.</p>
+            <div class= "codeblock">
+            <pre>
+            # You'll almost always see Pandas abbreviated as pd
+            import pandas as pd
+
+            # import data using the Pandas read_csv() function and assign the results to a variable
+            df = pd.read_csv('path_to/your/data_set.csv')
+
+            # Show the first 5 rows so that you can get a sense of what the data's like
+            df.head()
+            </pre></div>
+            <p><code>pd.read_csv</code> results in a <em>dataframe</em>. A simple definition of a dataframe is that it's a table. A slightly less
+                simple definition is that it is a 2-dimensional data structure with one or more columns. We can do all sorts of
+                interesting things using dataframes, and it's a concept common to other languages&#8212;so it's worth your time to become
+                acquainted with them.</p><br>
+            <p>When you're lucky, converting a csv or text file is as simple as the lines above. However, sometimes the file isn't in the exact
+                format you'd like. (This is one reason to run <code>df.head()</code>; it lets you see if there is obvious maintenance to be done.)
+                We're not going to go into Stuff You Might Need To Troubleshoot here, or we'd never get to the scatterplotting, but be aware that
+                It Is A Thing.</p><br>
+
+        <h3>Set up your X and Y variables</h3>
+            <p>A basic scatter plot maps the data from one variable&#8212;i.e. one column&#8212;against another. Typically,
+            the Y axis is the dependent variable, or the variable you are trying to study. So, for this exercise, I want to ask
+            my data if the number of bikes rented (my dependent variable) goes up or down depending on
+            how windy it is (my independent variable).</p><br>
+            <p>First, I extract just the number of bikes rented and the windspeed from my data set and assign them to
+            variables:</p>
+            <div class= "codeblock">
+            <pre>
+            x = df['wind_speed']
+            y = df['cnt']
+            </pre></div>
+            <p>At this point, I have the series I'm interested in stored in my x and y variables, and I could
+            generate a scatterplot with the same code I used above, but it's not very useful or pretty. There's
+            too much data and the chart is too small to really see a pattern.</p>
+            <img src="not useful scatter">
+            <p>So, next, let's improve the scatterplot to see if we can get a clearer sense of the relationship
+            (if one exists).</p>
+            <p><b>Note:</b>One key skill you'll want to learn is how to filter and group your data so that you can be more selective with what you're
+                plotting. Unfortunately, that too, is a big enough topic to be a post for another time.</p>
+
+         <h2>Set up your matplotlib figure</h2>
+            <p>Matplotlib is a very, very large library, and there's more than one way to do almost everything.
+            But this section describes the method I see most often, and is flexible enough that it should
+            meet most basic plotting needs.</p>

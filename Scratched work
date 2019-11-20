@@ -26,3 +26,31 @@ that you've worked with the dog. For example, here's an example using George, a 
     postcard -- you would need to join on <code>dog_name</code> and <code>month</code>. All you have to do is append an add an <code>AND</code> clause to the
     <code>JOIN</code>query.
   </p>.
+
+
+
+   Here's a couple hiccups you may encounter&#8212;and their solutions.</p><br>
+            <h3>No column labels</h3>
+                <p>If this is the case, <code>df.head()</code>will treat the first row as column labels, which is not what we want. You could go
+                    open the csv, add a new row, write column headers, save it, and rerun your code&#8212;but an easier way is to pass the column
+                    headers in an an argument when you create the dataframe:</p>
+            <div class= "codeblock">
+            <pre>
+            # import data using the Pandas read_csv() function and assign the results to a variable
+            df = pd.read_csv('path_to/your/data_set.csv',names=('column_one','column_two','column_three','fourth_column'))
+
+            # Show the first 5 rows so that you can get a sense of what the data's like
+            df.head()
+            </pre></div>
+
+
+# feed x and y into a scatter plot
+            plt.scatter(x,y)
+
+            # give it a title
+            plt.title('A very basic scatterplot')
+
+            # draw it
+            plt.show()
+
+{% endblock %}
