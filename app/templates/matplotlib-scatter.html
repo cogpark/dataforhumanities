@@ -105,4 +105,22 @@
          <h2>Set up your matplotlib figure</h2>
             <p>Matplotlib is a very, very large library, and there's more than one way to do almost everything.
             But this section describes the method I see most often, and is flexible enough that it should
-            meet most basic plotting needs.</p>
+            meet most basic plotting needs.</p><br>
+			<p>The first things we're going to do are create a <code>Figure</code>, which is like a canvas, and a single <code>
+			<code>Axes</code>, or one chart. To do this we call the <code>plt.subplots()</code> method. Something potentially confusing is that
+			calling this method creates both the canvas and the chart at the same time. It can even create multiple charts if you want it to. 
+			We can assign both to their own variables in one line of code, as well as passing along some style settings
+			(like how big the canvas should be). This process of creating multiple items at once is called "iterable unpacking," and it's
+			for somebody more technical than me to fully explain. Nevertheless, here's the code:
+			
+			<div class= "codeblock">
+            <pre>
+            fig,ax = plt.subplots(nrows=1, ncols=1, figsize=(10,8)
+            </pre></div>
+			<p>We've passed along three arguments to <code>plt.subplots()</code>. "nrows" and "ncols" defines how to lay 
+			your charts out. We're only creating 1 chart here, but if we were creating 2, we could change the number of 
+			rows or columns. (I could just call <code>plt.subplots()</code> here for the same effect, but sometimes
+			being explicit is nice.) The last argument, "figsize," lets you set the size of of the whole canvas in inches.
+			Note that <code>figsize=</code> takes a parenthesized, 2 item list of numbers (a 2-item tuple).</p><br>
+			
+			
