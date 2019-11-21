@@ -117,10 +117,41 @@
             <pre>
             fig,ax = plt.subplots(nrows=1, ncols=1, figsize=(10,8)
             </pre></div>
-			<p>We've passed along three arguments to <code>plt.subplots()</code>. "nrows" and "ncols" defines how to lay 
+			<p>We've passed along 3 arguments to <code>plt.subplots()</code>. "nrows" and "ncols" defines how to lay 
 			your charts out. We're only creating 1 chart here, but if we were creating 2, we could change the number of 
-			rows or columns. (I could just call <code>plt.subplots()</code> here for the same effect, but sometimes
+			rows or columns. (We could just call <code>plt.subplots()</code> here for the same effect, but sometimes
 			being explicit is nice.) The last argument, "figsize," lets you set the size of of the whole canvas in inches.
 			Note that <code>figsize=</code> takes a parenthesized, 2 item list of numbers (a 2-item tuple).</p><br>
 			
+			<p>Next, we'll create the scatter plot and add labels and a title to our axes. We do this by calling a bunch of methods
+			on our <code>Axes</code> object, which we stored in the variable "ax." Here's all the code together:</p>
+			
+			<div class= "codeblock">
+            <pre>
+            # define variables
+			x = df['wind_speed']
+            y = df['cnt']
+			
+			# build the Figure and Axes (i.e. the canvas and the chart)
+			fig,ax = plt.subplots(nrows=1, ncols=1, figsize=(10,8)
+			
+			# Add a title and increase the font size to 20
+			ax.set_title('How windspeed affects bike rentals', fontsize=20)
+			
+			# Label the horizontal and vertical axes respectively (and set their font sizes)
+			ax.set_xlabel('Number of bike rentals',fontsize=14)
+			ax.set_ylabel('Wind speed',fontsize=14)
+			
+			# Plot wind speed against number of rentals & declare the color & shape of the points
+			ax.scatter(x,y, color='darkgreen', marker='o')
+            </pre></div>
+			<p><code>color</code> and </code>marker</code>above are optional. You can use hex codes or RGB for color, and
+			you can find <a href="https://matplotlib.org/3.1.1/api/markers_api.html#module-matplotlib.markers">an extensive list of 
+			marker types</a> in the matplotlib documentation. Anyway, here's our results:</p><br>
+			<img src="">
+			<p>We've barely scratched the surface of what you can do with scatter plotting and matplotlib. You can customize
+			pretty much every aspect of your plots&#8212;and if you're going to show them in a formal setting, you should
+			do more than we've done here. (One place to begin is the <a href="https://seaborn.pydata.org/">seaborn library</a>,
+			which is built on top of matplotlib.) That said, I hope what we've covered will get you started visualizing
+			your data. </p>
 			
