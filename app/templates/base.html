@@ -1,32 +1,38 @@
-{% extends 'bootstrap/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data for Humanities People</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin&display=swap" rel="stylesheet">
+</head>
+<body>
 
-{% block title %}
-     {% if title %}  <title>{{ title }}</title> {% else %} <title>Data Work for Humanities People</title> {% endif %}
+</body>
+</html>
+
+<div class="wrapper">
+    <header class="main-head">
+        <nav class = "main-nav">
+           <a class="nav-1" href="">About</a>
+           <a class="nav-2" href="">Spreadsheet stuff</a>
+           <a class="nav-3" href="">SQL stuff</a>
+           <a class="nav-4" href="">Python stuff</a>
+        </nav>
+    </header>
+
+
+
+    <article class="content"><h1>I watched the storm, so beautiful yet terrific.</h1>
+    <p>In this layout, we display the areas in source order for any screen less that 500 pixels wide. We go to a two column layout, and then to a three column layout by redefining the grid, and the placement of items on the grid.</p></article>
+    <aside class="side">Sidebar</aside>
+    <div class="ad">Advertising</div>
+
+{% block content %}
 {% endblock %}
-
-{% block navbar %}
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ url_for('index') }}">Data work for humanities people</a>
-                <a href="/index">Home</a>
-                <a href="/testpage">Test page</a>
-                <a href="/testloop">Test loop</a>
-                <a href="/conditionaleg">Conditional test</a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> </div>
-        </div>
-    </nav>
-{% endblock %}
-
-        {% block content %}
-        {% endblock %}
+ <footer class="main-footer">The footer</footer>
+    </div>
 
 
 
