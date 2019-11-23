@@ -8,11 +8,11 @@ def index():
 
 @app.route('/basicjoins')
 def basicjoins():
-    return render_template('basicjoins.html')
+    return render_template('basicjoins.html',title="Basic joins")
 
 @app.route('/vlookups')
 def vlookups():
-    return render_template('vlookups.html')
+    return render_template('vlookups.html', title="How to do a Vlookup")
 
 # Test pages
 @app.route('/testpage')
