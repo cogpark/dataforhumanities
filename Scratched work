@@ -1,3 +1,84 @@
+
+
+
+/*
+@media (min-width: 500px) {
+
+    .side {
+        grid-column: col-start / span 3;
+        grid-row: 3;
+    }
+    .ad {
+        grid-column: col-start / span 3;
+        grid-row: 4;
+    }
+    .content, .main-footer {
+        grid-column: col-start 4 / span 9;
+    }
+
+}
+
+
+
+    .main-nav {
+        grid-column: 2 / span 4;
+        display: grid;
+        grid-template-columns: repeat(12, [col-start] 1fr);
+    }
+
+        }
+    .nav-1 {
+      grid-column: 2 / 3;
+      text-align: center;
+  }
+    .nav-2 {
+       grid-column: 3 / 4;
+  }
+    .nav-3 {
+        grid-column: 4 / 5;
+  }
+    .nav-4 {
+        grid-column: 5 / 6;
+   }
+
+  .content {
+        grid-column: col-start 3 / span 8;
+        grid-row: 2 / 4;
+  }
+  .side {
+        grid-column: col-start 11 / span 2;
+        grid-row: 2;
+  }
+  .ad {
+        grid-column: col-start 11 / span 2;
+        grid-row: 3;
+  }
+  .main-footer {
+        grid-column: col-start / span 12;
+  }
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+   color: #76323f;
+   font-family: 'Oswald', sans-serif;
+}
+
+
+li, p {
+    color:#565656;
+    font-family: 'Cabin', sans-serif;
+}
+
+
+a  {
+    color:  #76323f;
+}
+
+a:hover {
+    color: #A6C7F0;
+}*/
+
  <h3>Multiple join conditions</h3>
   Sometimes, you need to join on multiple columns. This happens a lot when you have a "time" column in a table. If we imagine that
 our <code>DOGS</code> table above had number of words by month, then joining on the dog's name is going to return one record for each month

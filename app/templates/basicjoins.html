@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="post-container">
   <h1>How to write a basic join</h1>
   <h2>Contents</h2>
     <ul>
-        <li><a href="#basic-concept">The basic syntax</a></li>
-        <li><a href="#multiple-conditions">The basic syntax</a></li>
-        <li><a href="#aliases">Table abbreviations (aka table aliases)</a></li>
+        <li><a href="{{ pp }}#basic-concept">The basic syntax</a></li>
+        <li><a href="{{ pp }}#multiple-conditions">The basic syntax</a></li>
+        <li><a href="{{ pp }}#aliases">Table abbreviations (aka table aliases)</a></li>
     </ul>
 
   <h2>Introduction</h2>
-  <p>A JOIN associates data in one table with data from another table. To do this, both tables need to have a common column -- usually a unique ID, or maybe
+  <p>A JOIN associates data in one table with data from another table. To do this, both tables need to have a common column&#8212;usually a unique ID, or maybe
       a combination of an ID and a date.</p>
 
     <a name=basic-concept"><h2>The basic concept</h2></a>
@@ -18,16 +19,17 @@
 
   <div class="codeblock">
       <pre>
-      SELECT
-        table1.column_one,
-        table1.column_two,
-        table2.column_three
-      FROM
-        table1
-      JOIN
-        table 2
-        ON table1.column_one = table2.column_one;
-      </pre>
+SELECT
+    table1.column_one,
+    table1.column_two,
+    table2.column_three
+FROM
+    table1
+JOIN
+    table 2
+ON
+    table1.column_one = table2.column_one;
+</pre>
   </div>
     <p>There are 3 major pieces to this query:</p>
     <ul>
@@ -41,29 +43,29 @@ of words each has learned. Then you have another table where you have dog names 
 
   <div class= "codeblock">
     <pre>
-      DOGS
-          dog_name |  age  |      breed      | words_learned
-      -------------+-------+-----------------+--------------
-      | George     |   3   |Aussie shepherd  |      149     |
-      | Marco      |   10  |golden retriever |      82      |
-      | Polo       |   9   |   pit bull      |      90      |
-      | Lizzie     |   6   |     husky       |      75      |
-      | Oreo       |   12  |   dalmatian     |      23      |
-      | Kiki       |   8   |  labradoodle    |      39      |
+DOGS
+  dog_name |  age  |      breed      | words_learned
+-------------+-------+-----------------+--------------
+| George     |   3   |Aussie shepherd  |      149     |
+| Marco      |   10  |golden retriever |      82      |
+| Polo       |   9   |   pit bull      |      90      |
+| Lizzie     |   6   |     husky       |      75      |
+| Oreo       |   12  |   dalmatian     |      23      |
+| Kiki       |   8   |  labradoodle    |      39      |
     </pre></div>
 
   <div class= "codeblock">
     <pre>
-     OWNERS
-          dog_name |owner_first_name| owner_last_name
-      -------------+----------------+----------------
-      | George     |      Jayda     |     Haigh      |
-      | Marco      |     Margaret   |     Lang       |
-      | Polo       |      Finely    |     Barry      |
-      | Lizzie     |       Skye     |    Charles     |
-      | Oreo       |       Alex     |     Power      |
-      | Kiki       |      Cinda     |     Walker     |
-    </pre>
+OWNERS
+  dog_name |owner_first_name| owner_last_name
+-------------+----------------+----------------
+| George     |      Jayda     |     Haigh      |
+| Marco      |     Margaret   |     Lang       |
+| Polo       |      Finely    |     Barry      |
+| Lizzie     |       Skye     |    Charles     |
+| Oreo       |       Alex     |     Power      |
+| Kiki       |      Cinda     |     Walker     |
+</pre>
   </div>
 
     <p>For whatever reason, you want to associate names with owners. (Maybe you're sending them personalized notes congratulating them on how many words their dog has learned, or something.)
@@ -73,32 +75,32 @@ of words each has learned. Then you have another table where you have dog names 
 
   <div class="codeblock">
         <pre>
-        SELECT
-          OWNERS.owner_first_name,
-          OWNERS.owner_last_name,
-          DOGS.words_learned
-        FROM
-          OWNERS
-        JOIN
-          DOGS
-          ON OWNERS.dog_name = DOGS.dog_name;
-        </pre>
+SELECT
+    OWNERS.owner_first_name,
+    OWNERS.owner_last_name,
+    DOGS.words_learned
+FROM
+    OWNERS
+JOIN
+    DOGS
+    ON OWNERS.dog_name = DOGS.dog_name;
+    </pre>
     </div>
     <p>Note that the joining column doesn't have to be one of the columns in your results; its purpose is just to tell the database
     how the tables should "fit" together.</p><br>
     <p>Here's the results of our query:</p>
       <div class= "codeblock">
     <pre>
-     results
-     owner_first_name| owner_last_name |  words_learned
-     ----------------+-----------------+----------------
-     |      Jayda    |     Haigh       |      149
-     |     Margaret  |     Lang        |       82
-     |      Finely   |     Barry       |       90
-     |       Skye    |    Charles      |       75
-     |       Alex    |     Power       |       23
-     |      Cinda    |     Walker      |       39
-  </pre>
+# results
+owner_first_name| owner_last_name |  words_learned
+----------------+-----------------+----------------
+|      Jayda    |     Haigh       |      149
+|     Margaret  |     Lang        |       82
+|      Finely   |     Barry       |       90
+|       Skye    |    Charles      |       75
+|       Alex    |     Power       |       23
+|      Cinda    |     Walker      |       39
+</pre>
   </div>
 
   <h2 >Complications</h2>
@@ -108,20 +110,20 @@ of words each has learned. Then you have another table where you have dog names 
         Each "George" will be joined with each owner of a "George," and 2 Georges x 2 George owners = 4 George-related records. And each George owner will be associated with
         both the number of words that their George learned <i>and</i> the number of words the other George learned. Chaos!</p> <br>
         <p>However, maybe you foresaw this when you built your database, and so you also included the <code>owner_last_name</code> in your <code>DOGS</code> table. That means that there
-            would be 2 common columns, and you could just add an <code>AND</code> clause to your <code>JOIN</code>:</p> <br>
+            would be 2 common columns, and you could just add an <code>AND</code> clause to your <code>JOIN</code>:</p><br>
 
   <div class="codeblock">
         <pre>
-        SELECT
-          OWNERS.owner_first_name,
-          OWNERS.owner_last_name,
-          DOGS.words_learned
-        FROM
-          OWNERS
-        JOIN
-          DOGS
-          ON OWNERS.dog_name = DOGS.dog_name
-            AND OWNERS.owner_last_name = DOGS.owner_last_name;
+SELECT
+  OWNERS.owner_first_name,
+  OWNERS.owner_last_name,
+  DOGS.words_learned
+FROM
+  OWNERS
+JOIN
+  DOGS
+  ON OWNERS.dog_name = DOGS.dog_name
+    AND OWNERS.owner_last_name = DOGS.owner_last_name;
         </pre>
     </div>
     <p>Important caveat: An entirely better system would be to have a unique ID for each dog. Aussie George can be 0001 and German George can be 0049. Then you can join on an ID
@@ -130,23 +132,23 @@ of words each has learned. Then you have another table where you have dog names 
 <a name="aliases"><h3>Table abbreviations (or, technically, table aliases)</h3></a>
     <p>In my examples above, I had to write out the words OWNERS and DOGS several times. This can be tedious, especially
     in a really big query with lots of columns. Fortunately, every SQL framework that I've worked in lets you temporarily
-    assign an "alias" for each table that you can use instead -- <code>ow</code> instead of <code>OWNERS</code> for example</p>:
+    assign an "alias" for each table that you can use instead -- <code>ow</code> instead of <code>OWNERS</code> for example:</p>
  <div class="codeblock">
-        <pre>
-        SELECT
-          o.owner_first_name,
-          o.owner_last_name,
-          o.words_learned
-        FROM
-          OWNERS ow
-        JOIN
-          DOGS d
-          ON o.dog_name = d.dog_name
-            AND o.owner_last_name = d.owner_last_name;
-        </pre>
+<pre>
+SELECT
+  o.owner_first_name,
+  o.owner_last_name,
+  o.words_learned
+FROM
+  OWNERS ow
+JOIN
+  DOGS d
+  ON o.dog_name = d.dog_name
+    AND o.owner_last_name = d.owner_last_name;
+</pre>
     </div>
     <p>It's confusing at first that you assign the abbreviations in the <code>FROM</code>statement, even though you appear to be already using it
-    in the <code>SELECT</code>statement. Your querying tool, it turns out, does not find this confusing, and you will get used to it.</p>
+    in the <code>SELECT</code>statement. Your querying tool, it turns out, does not find this confusing, and you will get used to it.</p><br>
 
     <h3>Types of joins</h3>
 <p>The examples above all use <code>JOIN</code>, which is a type of <code>INNER JOIN</code>. An "inner join" combines tables when
@@ -156,5 +158,5 @@ of words each has learned. Then you have another table where you have dog names 
 <p>However, there are also scenarios where one table contains matching data <i>and</i> additional data that the table you're joining with
 doesn't have. An inner join will filter out the non-matching rows. If you wanted to keep those rows, you'd need to use an outer join. But that's a
 join for a different post. </p>
-
+</div>
 {% endblock %}

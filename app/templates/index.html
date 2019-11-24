@@ -1,8 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h1>Most recent:</h1>
+<div class="post-container">
+            {% include 'previews/'+ preview_list['basic joins'] +'-prev.html' %}
+
+</div>
 
 
-        <h1> Hey! </h1>
+<div class="post-container">
+        {% include 'previews/'+preview_list['basic vlookups']+'-prev.html' %}
+</div>
+
+<div class="post-container">
+        {% include 'previews/'+preview_list['basic matplotlib scatter']+'-prev.html' %}
+</div>
+
+<div class="post-container">
+        {% include 'previews/'+ preview_list['pd read csv methods']+'-prev.html' %}
+</div>
 
 {% endblock %}
+

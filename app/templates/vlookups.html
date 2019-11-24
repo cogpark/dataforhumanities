@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>Vlookups  </h1>
-<p class="summary">How to use vlookup formulas in Excel and Sheets </p>
+<div class="post-container">
+<h1>Vlookups </h1>
+<p class="summary">Using vlookup formulas in Excel and Sheets </p>
     <h2>Contents</h2>
         <ul>
-            <li><a href="#basic-vlookup">Vlookup basics</a></li>
-            <li><a href="#complicated-example">More complicated vlookup example</a></li>
+            <li><a href="{{ pp }}#basic-vlookup">Vlookup basics</a></li>
+            <li><a href="{{ pp }}#complicated-example">More complicated vlookup example</a></li>
         </ul>
 
     <h2>Introduction</h2>
@@ -101,4 +101,5 @@
                 Vlookups are immensely useful for this kind of thing. </p><br>
             <p>One final note: There is also an "hlookup," which you may occasionally want to use. It works the same as a vlookup,
                 except that where a vlookup looks across columns, an hlookup looks across rows. </p>
-{% endblock %}
+</div>
+    {% endblock %}

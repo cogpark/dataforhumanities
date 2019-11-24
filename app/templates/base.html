@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Data for Humanities People</title>
@@ -8,32 +9,30 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin&display=swap" rel="stylesheet">
 </head>
 <body>
-
-</body>
-</html>
-
 <div class="wrapper">
     <header class="main-head">
-        <nav class = "main-nav">
-           <a class="nav-1" href="">About</a>
-           <a class="nav-2" href="">Spreadsheet stuff</a>
-           <a class="nav-3" href="">SQL stuff</a>
-           <a class="nav-4" href="">Python stuff</a>
-        </nav>
+       <h1 class = "nav-title">Data stuff for humanities folks</h1>
     </header>
 
+    <div class="main-content">
+
+        {% block content %} {% endblock %}
+        </div>
 
 
-    <article class="content"><h1>I watched the storm, so beautiful yet terrific.</h1>
-    <p>In this layout, we display the areas in source order for any screen less that 500 pixels wide. We go to a two column layout, and then to a three column layout by redefining the grid, and the placement of items on the grid.</p></article>
-    <aside class="side">Sidebar</aside>
-    <div class="ad">Advertising</div>
+</div>
 
-{% block content %}
-{% endblock %}
+</body>
+
+<!--
+<h1>I watched the storm, so beautiful yet terrific.</h1>
+    <p>In this layout, we display the areas in source order for any screen less that 500 pixels wide.
+        We go to a two column layout, and then to a three column layout by redefining the grid, and the placement of items on the grid.</p></article>
+
+
+
  <footer class="main-footer">The footer</footer>
-    </div>
-
-
-
+</div>
+-->
+</html>
 
