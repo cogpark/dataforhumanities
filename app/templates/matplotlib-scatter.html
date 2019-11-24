@@ -1,50 +1,56 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="post-container">
   <h1>Basic scatter plots in using Matplotlib</h1>
         <h2>Contents</h2>
             <ul>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
+                <li><a href="{{ pp }}#getting-started"></a>Getting setup</li>
+                <li><a href="{{ pp }}#basic-scatter"></a>The most basic possible scatter plot</li>
+                <li><a href="{{ pp }}#scatter-from-csv"></a>Creating a scatter from CSV data</li>
+                <ul>
+                    <li><a href="matplotlib-scatter#loading-variables">Loading data into variables</a></li>
+                    <li><a href="matplotlib-scatter#fig-and-ax">Plotting: figures and charts</a></li>
+                </ul>
             </ul>
         <h2>Intro</h2>
-                <p>Scatter plots are useful for seeing if there's a relationship between two variables. The idea is, you graph one against another,
-                    and you can see if an increase in one is mirrored by an increase in another, if one decreases when the other increases, or if
-                    there's no apparent relationship. </p><br>
+            <p>Scatter plots are useful for seeing if there's a relationship between two variables. The idea is, you graph one against another,
+                and you can see if an increase in one is mirrored by an increase in another, if one decreases when the other increases, or if
+                there's no apparent relationship. </p><br>
 
-                <p>Here's how you make a basic scatter plot in using the Python3 library, matplotlib.</p>
+            <p>Here's how you make a basic scatter plot in using the Python3 library, matplotlib.</p>
 
-        <h2>Setup</h2>
+    <a name="getting-started"><h2>Setup</h2></a>
                 <p>You'll need Matplotlib installed. You will almost certainly want Pandas, another Python library, too. If
                     <a href="https://www.anaconda.com/distribution/">you have Anaconda installed</a>, you're already set. You can also install
                     each&#8212;<a href="https://pandas.pydata.org/pandas-docs/stable/install.html">Pandas</a> and
                     <a href="https://matplotlib.org/3.1.1/users/installing.html">Matplotlib</a>&#8212; individually.</p> <br>
 
                 <p>Finally, you'll need somewhere to visualize your plot. A great place to begin is with
-                    <a href="https://jupyter.org/install">Jupyter Notebooks, which is what I'll be using here./a></p><br>
+                    <a href="https://jupyter.org/install">Jupyter Notebooks, which is what I'll be using here.</a></p><br>
 
                 <p>You'll also need data. I'll show you how to do this with fake data and with data you import from a csv. </p>
 
-        <h2>A quick, basic scatter</h2>
+        <a name="basic-scatter"><h2>A quick, basic scatter</h2></a>
             <p>Here are the basic building blocks of a scatter plot:</p>
              <div class= "codeblock">
                 <pre>
-                # You'll see Matplotlib.pyplot abbreviated as plt and pp
-                import matplotlib.pyplot as plt
+# You'll see Matplotlib.pyplot abbreviated as plt and pp
+import matplotlib.pyplot as plt
 
-                # Here's some data
-                x = [1,3,19,3,12,15,25,43,3,13,19,12]
-                y = [2,25,24,35,18,34,7,10,23,21,1,8]
+# Here's some data
+x = [1,3,19,3,12,15,25,43,3,13,19,12]
+y = [2,25,24,35,18,34,7,10,23,21,1,8]
 
-                # feed x and y into a scatter plot
-                plt.scatter(x,y)
+# feed x and y into a scatter plot
+plt.scatter(x,y)
 
-                # give it a title
-                plt.title('A very basic scatterplot')
+# give it a title
+plt.title('A very basic scatterplot')
 
-                # draw it
-                plt.show()
+# draw it
+plt.show()
                 </pre></div>
             <p>That generates the following scatter plot:</p>
             <img src="../static/img/scatter-basic">
@@ -57,8 +63,9 @@
                 <li>Style the chart</li>
             </ul>
 
-        <h2>Scatterplotting data that you load from a CSV</h2>
+        <a name="scatter-from-csv"><h2>Scatterplotting data that you load from a CSV</h2>
             <p>A lot of data you work with will be in .csv or .txt format. Fortunately, Pandas has a <code>read_csv()</code>function that can help.
+                (I have also done a more in-depth <a href=" {{ pdcsv_link }}"> post that covers some useful things to know about loading csv data</a>.
                 For this example, I'll use <a href="https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset">a dataset on London
                     bike sharing</a>I downloaded from Kaggle.</p>
             <div class= "codeblock">
@@ -81,7 +88,7 @@
                 We're not going to go into Stuff You Might Need To Troubleshoot here, or we'd never get to the scatterplotting, but be aware that
                 It Is A Thing.</p><br>
 
-        <h3>Set up your X and Y variables</h3>
+        <a name="loading-variables"><h3>Set up your X and Y variables</h3></a>
             <p>A basic scatter plot maps the data from one variable&#8212;i.e. one column&#8212;against another. Typically,
             the Y axis is the dependent variable, or the variable you are trying to study. So, for this exercise, I want to ask
             my data if the number of bikes rented (my dependent variable) goes up or down depending on
@@ -102,11 +109,11 @@
             <p><b>Note:</b>One key skill you'll want to learn is how to filter and group your data so that you can be more selective with what you're
                 plotting. Unfortunately, that too, is a big enough topic to be a post for another time.</p>
 
-         <h2>Set up your matplotlib figure</h2>
+        <a name="fig-and-ax"><h2>Set up your matplotlib figure & chart</h2></a>
             <p>Matplotlib is a very, very large library, and there's more than one way to do almost everything.
             But this section describes the method I see most often, and is flexible enough that it should
             meet most basic plotting needs.</p><br>
-			<p>The first things we're going to do are create a <code>Figure</code>, which is like a canvas, and a single <code>
+			<p>The first things we're going to do are create a <code>Figure</code>, which is like a canvas, and a single
 			<code>Axes</code>, or one chart. To do this we call the <code>plt.subplots()</code> method. Something potentially confusing is that
 			calling this method creates both the canvas and the chart at the same time. It can even create multiple charts if you want it to. 
 			We can assign both to their own variables in one line of code, as well as passing along some style settings
@@ -115,7 +122,7 @@
 			
 			<div class= "codeblock">
             <pre>
-            fig,ax = plt.subplots(nrows=1, ncols=1, figsize=(10,8)
+fig,ax = plt.subplots(nrows=1, ncols=1, figsize=(10,8)
             </pre></div>
 			<p>We've passed along 3 arguments to <code>plt.subplots()</code>. "nrows" and "ncols" defines how to lay 
 			your charts out. We're only creating 1 chart here, but if we were creating 2, we could change the number of 
@@ -128,22 +135,22 @@
 			
 			<div class= "codeblock">
             <pre>
-            # define variables
-			x = df['wind_speed']
-            y = df['cnt']
-			
-			# build the Figure and Axes (i.e. the canvas and the chart)
-			fig,ax = plt.subplots(nrows=1, ncols=1, figsize=(10,8)
-			
-			# Add a title and increase the font size to 20
-			ax.set_title('How windspeed affects bike rentals', fontsize=20)
-			
-			# Label the horizontal and vertical axes respectively (and set their font sizes)
-			ax.set_xlabel('Number of bike rentals',fontsize=14)
-			ax.set_ylabel('Wind speed',fontsize=14)
-			
-			# Plot wind speed against number of rentals & declare the color & shape of the points
-			ax.scatter(x,y, color='darkgreen', marker='o')
+# define variables
+x = df['wind_speed']
+y = df['cnt']
+
+# build the Figure and Axes (i.e. the canvas and the chart)
+fig,ax = plt.subplots(nrows=1, ncols=1, figsize=(10,8)
+
+# Add a title and increase the font size to 20
+ax.set_title('How windspeed affects bike rentals', fontsize=20)
+
+# Label the horizontal and vertical axes respectively (and set their font sizes)
+ax.set_xlabel('Number of bike rentals',fontsize=14)
+ax.set_ylabel('Wind speed',fontsize=14)
+
+# Plot wind speed against number of rentals & declare the color & shape of the points
+ax.scatter(x,y, color='darkgreen', marker='o')
             </pre></div>
 			<p><code>color</code> and </code>marker</code>above are optional. You can use hex codes or RGB for color, and
 			you can find <a href="https://matplotlib.org/3.1.1/api/markers_api.html#module-matplotlib.markers">an extensive list of 
@@ -154,4 +161,7 @@
 			do more than we've done here. (One place to begin is the <a href="https://seaborn.pydata.org/">seaborn library</a>,
 			which is built on top of matplotlib.) That said, I hope what we've covered will get you started visualizing
 			your data. </p>
-			
+
+</div>
+</div>
+{% endblock %}
